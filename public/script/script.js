@@ -150,7 +150,7 @@ function AddGroupMember(lastName, firstName) {
 * Function to remove (delete) a selected group member from the selection list.
 * 
 */
-function RemoveGroupMember() {
+function RemoveGroupMember(lastName, firstName) {
 		let option = document.getElementById("members");
 		option.text = lastName + ", " + firstName;
 		membersLst.remove(option.selectedIndex);
