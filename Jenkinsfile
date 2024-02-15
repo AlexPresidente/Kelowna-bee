@@ -22,20 +22,21 @@ pipeline{
          stage('Testing'){
             steps{
             echo 'This is testing'
+            sh 'firebase deploy -P testing-replica-71a63 --token "$FIREBASE_DEPLOY_TOKEN"'
             }
         }
 
 
         stage('Staging'){
             steps{
-            sh 'firebase deploy -P password-generator-staging --token "$FIREBASE_DEPLOY_TOKEN"'
+            sh 'firebase deploy -P staging-replica-de40d --token "$FIREBASE_DEPLOY_TOKEN"'
             }
         }
 
 
         stage('Production'){
             steps{
-            sh 'firebase deploy -P password-generator-production --token "$FIREBASE_DEPLOY_TOKEN"'
+            sh 'firebase deploy -P production-replica-95934 --token "$FIREBASE_DEPLOY_TOKEN"'
             }
         }
     }
