@@ -1,0 +1,32 @@
+pipeline{
+    agent any
+       
+    
+
+    environment {
+    FIREBASE_DEPLOY_TOKEN = credentials('firebase-token')
+    }
+
+
+    stages{
+        stage('Building'){
+            steps{
+            sh 'sudo npm install -g firebase-tools'
+            }
+        } 
+
+
+        stage('Staging'){
+            steps{
+            sh 'firebase deploy -P staging-replica-de40d --token "$FIREBASE_DEPLOY_TOKEN"'
+            }
+        }
+
+
+        stage('Production'){
+            steps{
+            sh 'firebase deploy -P production-replica-95934 --token "$FIREBASE_DEPLOY_TOKEN"'
+            }
+        }
+    }
+}
